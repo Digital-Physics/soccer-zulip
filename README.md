@@ -1,0 +1,1 @@
+This is repo for a [zulip](https://en.wikipedia.org/wiki/Zulip) bot that will interact in Zulip discussion forums where soccer is being discussed.
