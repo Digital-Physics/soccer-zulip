@@ -11,7 +11,7 @@ class WC2026BotHandler:
     '''
 
     def usage(self) -> str:
-        return '''WC2026-bot responds to messages with the word 'soccer' in them. It responds with a world cup video and a short message.'''
+        return '''WC2026-bot responds with a World Cup video to messages with the word 'soccer' in them when it is tagged (at the start of a post) in channels it follows.'''
 
     @staticmethod
     def get_world_cup_vid() -> str:
@@ -59,7 +59,15 @@ class WC2026BotHandler:
                 response_content = f"⚽ There are {days_until} days until the start of the 2026 World Cup! {video_url}"
 
                 bot_handler.send_reply(message, response_content)
+            else:
+                world_cup_start = datetime.date(2026, 6, 11)
+                today = datetime.date.today()
+                days_until = (world_cup_start - today).days
+                
+                response_content = f"⚽ There are {days_until} days until the start of the 2026 World Cup! Use the secret word when you @ me and I'll share a classic World Cup video."
+
+                bot_handler.send_reply(message, response_content)
             
-            print("DEBUG received:", message)
+            print("DEBUG received message:", message)
 
 handler_class = WC2026BotHandler
