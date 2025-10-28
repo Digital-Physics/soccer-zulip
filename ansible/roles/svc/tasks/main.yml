@@ -1,0 +1,23 @@
+- file:
+    path: "{{ home }}/.config/systemd/user"
+    state: directory
+    mode: "0755"
+
+- copy:
+    dest: "{{ home }}/.config/systemd/user/soccer-bot.service"
+    content: |
+      [Unit]
+      Description=soccer-bot (service)
+      [Service]
+      WorkingDirectory={{ home }}/soccer-bot
+      Environment="PYTHONPATH=."
+      ExecStart={{ home }}/.local/bin/uv run zulip-run-bot wc2026 --config-file ./zuliprc
+      [Install]
+      WantedBy=default.target
+
+- systemd:
+    name: "soccer-bot.service"
+    scope: user
+    enabled: true
+    state: started
+    daemon_reload: true

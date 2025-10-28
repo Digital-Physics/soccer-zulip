@@ -6,8 +6,7 @@ from typing import Dict
 
 class WC2026BotHandler:
     '''
-    WC2026-bot responds to messages with the word 'soccer' in them. 
-    It responds with a world cup video and a short message.
+    WC2026-bot responds with a World Cup video to messages with the word 'soccer' in them when it is tagged (at the start of a post) in channels it follows.
     '''
 
     def usage(self) -> str:
@@ -45,7 +44,7 @@ class WC2026BotHandler:
 
     def handle_message(self, message: Dict[str, str], bot_handler: AbstractBotHandler):
             """
-            Processes incoming Zulip messages and responds if 'soccer' is found.
+            Processes incoming Zulip messages and respond.
             """
             content = message['content'].lower()
             
@@ -56,7 +55,7 @@ class WC2026BotHandler:
                 today = datetime.date.today()
                 days_until = (world_cup_start - today).days
                 
-                response_content = f"⚽ There are {days_until} days until the start of the 2026 World Cup! {video_url}"
+                response_content = f"⚽ There are {days_until} days until the start of the 2026 World Cup!\n{video_url}"
 
                 bot_handler.send_reply(message, response_content)
             else:
@@ -64,7 +63,7 @@ class WC2026BotHandler:
                 today = datetime.date.today()
                 days_until = (world_cup_start - today).days
                 
-                response_content = f"⚽ There are {days_until} days until the start of the 2026 World Cup! Use the secret word when you @ me and I'll share a classic World Cup video."
+                response_content = f"⚽ There are {days_until} days until the start of the 2026 World Cup!\nUse the secret word when you @ me and I'll share a classic World Cup video."
 
                 bot_handler.send_reply(message, response_content)
             
