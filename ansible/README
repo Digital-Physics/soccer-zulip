@@ -1,16 +1,11 @@
 this describes how this bot is deployed and how you can deploy your changes to
 it
 
-it runs on broome.cluster.recurse.com as the svc-meeting-mutex user. you can
+it runs on broome.cluster.recurse.com as the svc-soccer-bot user. you can
 add yourself as a maintainer of the bot by submitting a merge-request against
 github.com/recursecenter/cluster-config, adding yourself to the maintainer
 list in roles/svc-accts/vars/main.yml. if anyone asks if it's cool with the
 original author to add you, point them here (@rafl): yes, it's cool!
-
-within the per-user systemd instance for that user, there exist three timers.
-one of them, meeting-mutex.timer, runs the checks on the latest calendar feed, and the other two, meeting-mutex-snapshot-{hourly,daily}.timer, copy the json file containing our state json file to a snapshot/backup location in
-/data/svc-meeting-mutex, just in case something breaks or we ever need a
-slightly older version.
 
 this ansible/ directory contains the code to deploy this whole thing to broome.
 to do that, run

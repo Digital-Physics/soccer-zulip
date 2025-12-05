@@ -19,5 +19,5 @@
     name: "soccer-bot.service"
     scope: user
     enabled: true
-    state: started
+    state: restarted
     daemon_reload: true

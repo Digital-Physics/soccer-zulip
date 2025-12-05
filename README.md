@@ -8,9 +8,15 @@ Tech Notes:
 -There is another README.md in the ansible directory (from @rafl)
 -If all else fails, reach out to @rafl
 
+
 ### running locally for testing
 ```
 PYTHONPATH=. uv run zulip-run-bot wc2026 --config-file ./zuliprc
+```
+
+### ssh login
+```
+ssh broome.cluster.recurse.com
 ```
 
 ### to redeploy after to the Recurse Center's "Heap" cluster
@@ -28,6 +34,14 @@ sudo -u svc-soccer-bot bash
 ```
 svc-soccer-bot@broome:~/soccer-bot$ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 svc-soccer-bot@broome:~/soccer-bot$ systemctl --user status
+```
+
+```
+svc-soccer-bot@broome:~$ systemctl --user --failed
+```
+
+```
+journalctl --user -u soccer-bot.service
 ```
 
 ### this was put into the ansible yaml file for the svc task, so not needed
