@@ -36,6 +36,7 @@ svc-soccer-bot@broome:~/soccer-bot$ export XDG_RUNTIME_DIR=/run/user/$(id -u)
 svc-soccer-bot@broome:~/soccer-bot$ systemctl --user status
 ```
 
+### debugging
 ```
 svc-soccer-bot@broome:~$ systemctl --user --failed
 ```
